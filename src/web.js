@@ -1,11 +1,11 @@
 const express = require('express');
-const userRoute = require('./routes/user.route');
+const apiRoutes = require('./api');
 
 module.exports.start = () => {
     const web = express();
     const PORT = process.env.PORT || 3000;
 
-    web.use('/users', userRoute);
+    web.use('/api', apiRoutes);
 
     web.get('/health', (req, res) => {
         res.sendStatus(200);

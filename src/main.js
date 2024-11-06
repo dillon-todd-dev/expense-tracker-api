@@ -3,14 +3,18 @@ const app = require('./app');
 
 config();
 
-const initApp = () => {
-    const closeMongoConnection = () => {
+const initApp = async () => {
+    const closeMongoConnection = async () => {
         if (app.db) {
-            console.log('closing mongodb connection');
-            app.db.close(true).then(() => {
-                console.log('exiting application');
+            console.log('attempting to close mongodb connection');
+            try {
+                await app.db.close();
+                console.log('successfully close mongodb connection');
                 process.exit(0);
-            })
+            } catch (err) {
+                console.log('unable to close mongodb connection: ' + err);
+                process.exit(0);
+            }
         } else {
             console.log('exiting application');
             process.exit(0);
@@ -23,16 +27,15 @@ const initApp = () => {
         const { MongoClient } = require('mongodb');
 
         const mongoUrl = process.env.MONGO_URL;
-        MongoClient.connect(mongoUrl).then((db) => {
-            console.log('connected to db');
-            app.db = db;
+        const client = new MongoClient(mongoUrl);
+        const db = client.db('expense_tracker');
 
-            const web = require('./web');
-            web.start();
-        }, (err) => {
-            console.error('error connecting to mongodb');
-            process.exit(-1);
-        });
+        console.log('successfully connected to mongodb');
+
+        app.db = db;
+
+        const web = require('./web');
+        web.start();
     } catch (err) {
         console.log('error starting application');
         process.exit(-2);
