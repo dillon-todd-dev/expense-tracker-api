@@ -5,21 +5,22 @@ const logger = require('./logger');
 config();
 
 const initApp = async () => {
-    app.logger = logger.createLogger();
+    const log = logger.createLogger();
+    app.logger = log;
 
     const closeMongoConnection = async () => {
         if (app.db) {
-            app.logger.debug('attempting to close mongodb connection');
+            log.debug('attempting to close mongodb connection');
             try {
                 await app.db.close();
-                app.logger.log.debug('successfully close mongodb connection');
+                log.debug('successfully close mongodb connection');
                 process.exit(0);
             } catch (err) {
-                app.logger.error('unable to close mongodb connection: ' + err);
+                log.error('unable to close mongodb connection: ' + err);
                 process.exit(0);
             }
         } else {
-            app.logger.debug('exiting application');
+            log.debug('exiting application');
             process.exit(0);
         }
     };
@@ -33,14 +34,14 @@ const initApp = async () => {
         const client = new MongoClient(mongoUrl);
         const db = client.db('expense_tracker');
 
-        app.logger.debug('successfully connected to mongodb');
+        log.debug('successfully connected to mongodb');
 
         app.db = db;
 
         const web = require('./web');
         web.start();
     } catch (err) {
-        app.logger.error('error starting application: ' + err);
+        log.error('error starting application: ' + err);
         process.exit(-2);
     }
 };
