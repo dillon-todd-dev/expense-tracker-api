@@ -1,16 +1,45 @@
-const express = require('express');
 const { config } = require('dotenv');
+const app = require('./app');
 
 config();
 
-const initApp = () => {
-    const app = express();
+const initApp = async () => {
+    const closeMongoConnection = async () => {
+        if (app.db) {
+            console.log('attempting to close mongodb connection');
+            try {
+                await app.db.close();
+                console.log('successfully close mongodb connection');
+                process.exit(0);
+            } catch (err) {
+                console.log('unable to close mongodb connection: ' + err);
+                process.exit(0);
+            }
+        } else {
+            console.log('exiting application');
+            process.exit(0);
+        }
+    };
 
-    app.get('/', (req, res) => {
-        res.sendStatus(200);
-    });
+    process.on('SIGINT', closeMongoConnection);
 
-    app.listen(3000, () => console.log('server listening on port 3000'));
+    try {
+        const { MongoClient } = require('mongodb');
+
+        const mongoUrl = process.env.MONGO_URL;
+        const client = new MongoClient(mongoUrl);
+        const db = client.db('expense_tracker');
+
+        console.log('successfully connected to mongodb');
+
+        app.db = db;
+
+        const web = require('./web');
+        web.start();
+    } catch (err) {
+        console.log('error starting application: ' + err);
+        process.exit(-2);
+    }
 };
 
 initApp();
