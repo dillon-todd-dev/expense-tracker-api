@@ -38,4 +38,4 @@ terraform.rc
 
 node_modules/
 .env
-logs
+logs/
