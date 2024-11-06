@@ -1,0 +1,32 @@
+2024-11-06 14:11:27:1127 [34MDEBUG[39M: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:11:42:1142 [34MDEBUG[39M: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:11:43:1143 [34MDEBUG[39M: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:12:11:1211 [34MDEBUG[39M: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:12:20:1220 [34MDEBUG[39M: [34mattempting to close mongodb connection[39m
+2024-11-06 14:12:25:1225 [34MDEBUG[39M: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:12:37:1237 [34MDEBUG[39M: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:14:03:143 [34MDEBUG[39M: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:14:29:1429 [34MDEBUG[39M: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:14:33:1433 [34MDEBUG[39M: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:14:45:1445 [34MDEBUG[39M: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:14:46:1446 [34MDEBUG[39M: [34mserver listing on port 3000[39m
+2024-11-06 14:15:12:1512 [object Object]: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:15:12:1512 [object Object]: [34mserver listing on port 3000[39m
+2024-11-06 14:15:29:1529 [34mdebug[39m: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:15:29:1529 [34mdebug[39m: [34mserver listing on port 3000[39m
+2024-11-06 14:15:45:1545 [34MDEBUG[39M: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:15:45:1545 [34MDEBUG[39M: [34mserver listing on port 3000[39m
+2024-11-06 14:15:57:1557 [34mdebug[39m: [34msuccessfully connected to mongodb[39m
+2024-11-06 14:15:57:1557 [34mdebug[39m: [34mserver listing on port 3000[39m
+2024-11-06 14:17:24:1724 debug: successfully connected to mongodb
+2024-11-06 14:17:24:1724 debug: server listing on port 3000
+{"level":"debug","message":"successfully connected to mongodb","timestamp":"2024-11-06 14:17:55:1755"}
+{"level":"debug","message":"server listing on port 3000","timestamp":"2024-11-06 14:17:55:1755"}
+{"level":"debug","message":"successfully connected to mongodb","timestamp":"2024-11-06 14:18:31:1831"}
+{"level":"debug","message":"server listing on port 3000","timestamp":"2024-11-06 14:18:31:1831"}
+{"level":"debug","message":"attempting to close mongodb connection","timestamp":"2024-11-06 14:18:45:1845"}
+{"level":"debug","message":"successfully connected to mongodb","timestamp":"2024-11-06 14:18:47:1847"}
+{"level":"debug","message":"server listing on port 3000","timestamp":"2024-11-06 14:18:47:1847"}
+{"level":"debug","message":"successfully connected to mongodb","timestamp":"2024-11-06 14:20:41:2041"}
+{"level":"debug","message":"server listing on port 3000","timestamp":"2024-11-06 14:20:41:2041"}
+{"level":"debug","message":"attempting to close mongodb connection","timestamp":"2024-11-06 14:20:56:2056"}

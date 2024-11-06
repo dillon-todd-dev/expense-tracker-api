@@ -1,5 +1,8 @@
 const express = require('express');
 const apiRoutes = require('./api');
+const app = require('./app');
+
+const log = app.logger;
 
 module.exports.start = () => {
     const web = express();
@@ -11,5 +14,5 @@ module.exports.start = () => {
         res.sendStatus(200);
     });
 
-    web.listen(PORT, () => console.log(`server listing on port ${PORT}`));
+    web.listen(PORT, () => log.debug(`server listing on port ${PORT}`));
 };

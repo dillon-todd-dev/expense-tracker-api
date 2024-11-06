@@ -1,22 +1,25 @@
 const { config } = require('dotenv');
 const app = require('./app');
+const logger = require('./logger');
 
 config();
 
 const initApp = async () => {
+    app.logger = logger.createLogger();
+
     const closeMongoConnection = async () => {
         if (app.db) {
-            console.log('attempting to close mongodb connection');
+            app.logger.debug('attempting to close mongodb connection');
             try {
                 await app.db.close();
-                console.log('successfully close mongodb connection');
+                app.logger.log.debug('successfully close mongodb connection');
                 process.exit(0);
             } catch (err) {
-                console.log('unable to close mongodb connection: ' + err);
+                app.logger.error('unable to close mongodb connection: ' + err);
                 process.exit(0);
             }
         } else {
-            console.log('exiting application');
+            app.logger.debug('exiting application');
             process.exit(0);
         }
     };
@@ -30,14 +33,14 @@ const initApp = async () => {
         const client = new MongoClient(mongoUrl);
         const db = client.db('expense_tracker');
 
-        console.log('successfully connected to mongodb');
+        app.logger.debug('successfully connected to mongodb');
 
         app.db = db;
 
         const web = require('./web');
         web.start();
     } catch (err) {
-        console.log('error starting application: ' + err);
+        app.logger.error('error starting application: ' + err);
         process.exit(-2);
     }
 };
