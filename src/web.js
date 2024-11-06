@@ -1,5 +1,5 @@
 const express = require('express');
-const apiRoutes = require('./api');
+const apiRouter = require('./api');
 const app = require('./app');
 
 const log = app.logger;
@@ -8,7 +8,9 @@ module.exports.start = () => {
     const web = express();
     const PORT = process.env.PORT || 3000;
 
-    web.use('/api', apiRoutes);
+    web.use(express.json());
+
+    web.use('/api', apiRouter);
 
     web.get('/health', (req, res) => {
         res.sendStatus(200);
