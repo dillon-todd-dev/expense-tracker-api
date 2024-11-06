@@ -37,7 +37,7 @@ const initApp = async () => {
         const web = require('./web');
         web.start();
     } catch (err) {
-        console.log('error starting application');
+        console.log('error starting application: ' + err);
         process.exit(-2);
     }
 };
