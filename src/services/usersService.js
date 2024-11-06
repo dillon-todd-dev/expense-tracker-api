@@ -5,5 +5,5 @@ const getUsers = () => {
 };
 
 module.exports = {
-    getUsers
-}
+    getUsers,
+};

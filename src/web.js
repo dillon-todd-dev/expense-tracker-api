@@ -9,7 +9,7 @@ module.exports.start = () => {
 
     web.get('/health', (req, res) => {
         res.sendStatus(200);
-    })
+    });
 
     web.listen(PORT, () => console.log(`server listing on port ${PORT}`));
-}
+};
