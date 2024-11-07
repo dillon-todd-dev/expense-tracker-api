@@ -1,6 +1,7 @@
 services:
   mongo:
     image: mongo:latest
+    container_name: et-mongo
     ports:
       - "27017:27017"
     volumes:
@@ -8,12 +9,13 @@ services:
   
   app:
     image: dillontodd10/code:expense-tracker
+    container_name: et-api
     ports:
       - "3000:3000"
     volumes:
       - ./src:/app/src
     env_file:
-      - .env
+      - .env.dev
     depends_on:
       - mongo
 
