@@ -12,8 +12,7 @@ const getUserById = async (id) => {
 }
 
 const createUser = async (data) => {
-    const user = await app.db.collection('users').insertOne(data);
-    return user;
+    return await app.db.collection('users').insertOne(data);
 }
 
 const updateUser = async (id, data) => {
