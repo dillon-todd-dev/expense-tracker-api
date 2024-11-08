@@ -8,14 +8,12 @@ parameters:
 jobs:
   test:
     docker:
-      - image: cimg/base:current
-
+      - image: cimg/node:23.1.0
     steps:
       - checkout
       - run:
           name: "Install Dependencies"
           command: "npm install"
-      
       - run:
           name: "Run Tests"
           command: "npm run test"
