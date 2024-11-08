@@ -13,12 +13,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "test working_directory"
-          command: "pwd"
-      - run:
-          name: "test working_directory again"
-          command: "cat .gitignore"
-      - run:
           name: "Install Dependencies"
           command: "npm install"
       - run:
@@ -26,7 +20,7 @@ jobs:
           command: "npm run test"
 
 workflows:
-  unit-tests:
+  test:
     when: << pipeline.parameters.run-tests >>
     jobs:
       - test
