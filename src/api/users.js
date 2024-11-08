@@ -29,13 +29,13 @@ router.patch('/:id', async (req, res) => {
     const { body } = req;
     const user = await usersService.updateUser(id, body);
     res.send(user);
-})
+});
 
 // DELETE /api/users/:id
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     await usersService.deleteUser(id);
     res.sendStatus(200);
-})
+});
 
 module.exports = router;

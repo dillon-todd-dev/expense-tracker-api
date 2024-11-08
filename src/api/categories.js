@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     const { body } = req;
     const category = await categoriesService.createCategory(body);
     res.send({ id: category.insertedId });
-})
+});
 
 // PATCH /api/categories/:id
 router.patch('/:id', async (req, res) => {
@@ -29,13 +29,13 @@ router.patch('/:id', async (req, res) => {
     const { body } = req;
     const category = await categoriesService.updateCategory(id, body);
     res.send(category);
-})
+});
 
 // DELETE /api/categories/:id
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     await categoriesService.deleteCategory(id);
     res.sendStatus(200);
-})
+});
 
 module.exports = router;

@@ -10,9 +10,12 @@ module.exports.createLogger = () => {
 
     const transports = [
         new winston.transports.Console(),
-        new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
-        new winston.transports.File({ filename: 'logs/all.log' })
+        new winston.transports.File({
+            filename: 'logs/error.log',
+            level: 'error',
+        }),
+        new winston.transports.File({ filename: 'logs/all.log' }),
     ];
 
     return winston.createLogger({ level: logLevel, format, transports });
-}
+};

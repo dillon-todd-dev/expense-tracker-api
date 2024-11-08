@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     const { body } = req;
     const expense = await expenseService.createExpense(body);
     res.send({ id: expense.insertedId });
-})
+});
 
 // PATCH /api/expenses/:id
 router.patch('/:id', async (req, res) => {
@@ -29,13 +29,13 @@ router.patch('/:id', async (req, res) => {
     const { body } = req;
     const expense = await expenseService.updateExpense(id, body);
     res.send(expense);
-})
+});
 
 // DELETE /api/expenses/:id
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     await expenseService.deleteExpense(id);
     res.sendStatus(200);
-})
+});
 
 module.exports = router;
