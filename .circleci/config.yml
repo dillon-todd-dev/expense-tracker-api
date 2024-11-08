@@ -7,10 +7,17 @@ parameters:
 
 jobs:
   test:
+    working_directory: "/home/code/expense-tracker"
     docker:
       - image: cimg/node:23.1.0
     steps:
       - checkout
+      - run:
+          name: "test working_directory"
+          command: "pwd"
+      - run:
+          name: "test working_directory again"
+          command: "cat .gitignore"
       - run:
           name: "Install Dependencies"
           command: "npm install"
